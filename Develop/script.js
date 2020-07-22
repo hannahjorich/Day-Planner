@@ -1,9 +1,61 @@
-// Display current time and day 
+// This wraps all of our code
+$(document).ready(function(){
+    // this is displaying our current date 
+    $("#today").text(moment().format("dddd, MMMM, do"))
 
-// create timeblocks for standard business hours  in index 
+    // function to save task
+$(".saveBtn").on("click", function(){
+    var activity = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id")
+//this is saving tasks to our local storage 
+    localStorage.setItem(time, activity);
+    console.log(localStorage)
+});
+// checking for hours for past, present, future
+function checkHour(){
+    var currentHour = moment().hours();
+    console.log(currentHour);
+    $(".time-block").each(function() {
+        var ourHour = parseInt($(this).attr("id").split("-")[1])
+        if (ourHour < currentHour){
+            $(this).children(".description").addClass("past")
+            console.log("past")
+        }
+        else if (ourHour === currentHour){
 
-// Create a function that save task to local storage 
+            $(this).children(".description").removeClass("past")
+            $(this).children(".description").addClass("present")
+        }
+        else {
 
-// Create color coded function to indicate whether it is in the pasat, present or future 
+            $(this).children(".description").removeClass("past")
+            $(this).children(".description").removeClass("present")
+            $(this).children(".description").addClass("future")
+        }
+    })
+}
+// Calling fuction at page load 
+checkHour();
+//setting the value from local storage 
+$("#hour-9 .description").val(localStorage.getItem("hour-9"))
 
-// Should the task be saved once the page can refresh???
+$("#hour-10 .description").val(localStorage.getItem("hour-10"))
+
+$("#hour-11 .description").val(localStorage.getItem("hour-11"))
+
+$("#hour-12 .description").val(localStorage.getItem("hour-12"))
+
+$("#hour-13 .description").val(localStorage.getItem("hour-13"))
+
+$("#hour-14 .description").val(localStorage.getItem("hour-14"))
+
+$("#hour-15 .description").val(localStorage.getItem("hour-15"))
+
+$("#hour-16 .description").val(localStorage.getItem("hour-16"))
+
+$("#hour-17 .description").val(localStorage.getItem("hour-17"))
+// next step - setting the value for each hour 
+
+});
+
+// BONUS: add a button to jumptron to clear local storage for new day 
