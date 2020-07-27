@@ -1,7 +1,10 @@
 // This wraps all of our code
 $(document).ready(function(){
     // this is displaying our current date 
-    $("#today").text(moment().format("dddd, MMMM, do"))
+    moment(Date);
+    $("#currentDay").text(moment().format('dddd MMMM Do YYYY'));
+    // Moment Current time 
+    var currentTime = moment();
 
     // function to save task
 $(".saveBtn").on("click", function(){
@@ -54,8 +57,5 @@ $("#hour-15 .description").val(localStorage.getItem("hour-15"))
 $("#hour-16 .description").val(localStorage.getItem("hour-16"))
 
 $("#hour-17 .description").val(localStorage.getItem("hour-17"))
-// next step - setting the value for each hour 
 
 });
-
-// BONUS: add a button to jumptron to clear local storage for new day 
