@@ -16,7 +16,8 @@ SO THAT I can manage my time effectively
 HTML,
 CSS,
 jQuery, 
-JavaScript
+JavaScript,
+Moment.js
 
 
 ## Links 
